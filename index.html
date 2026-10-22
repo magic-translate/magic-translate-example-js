@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title data-t>Magic Translate JavaScript Example</title>
+    <meta name="description" content="Sample website using Magic Translate with a script tag" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style>
+      :root {
+        --foreground-rgb: 0, 0, 0;
+        --background-start-rgb: 214, 219, 220;
+        --background-end-rgb: 255, 255, 255;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --foreground-rgb: 255, 255, 255;
+          --background-start-rgb: 0, 0, 0;
+          --background-end-rgb: 0, 0, 0;
+        }
+      }
+
+      body {
+        color: rgb(var(--foreground-rgb));
+        background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
+          rgb(var(--background-start-rgb));
+        font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      }
+    </style>
+
+    <!-- This is all it takes to set up Magic Translate. -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@magic-translate/js@0.0.1/dist/magic-translate.min.js"
+      data-api-key="YOUR_API_KEY"
+      data-language="en"
+      defer
+    ></script>
+  </head>
+  <body>
+    <main class="p-8 gap-8 flex flex-col justify-between min-h-screen max-w-6xl mx-auto">
+      <div class="inline-block">
+        <p
+          class="text-sm justify-center border-b border-gray-300 bg-linear-to-b from-zinc-200 p-4 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-xl border"
+        >
+          <t>Get started with</t>&nbsp;
+          <code class="font-mono font-bold inline">&lt;script src="…/@magic-translate/js"&gt;</code>
+        </p>
+      </div>
+
+      <div class="flex justify-center">
+        <ul
+          id="languages"
+          class="flex flex-col sm:flex-row items-center text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+        >
+          <li
+            class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r last:border-0 dark:border-gray-600"
+          >
+            <label class="flex items-center px-3 py-3 gap-2 cursor-pointer">
+              <input type="radio" name="language" value="en" class="w-4 h-4 accent-blue-600" />
+              English
+            </label>
+          </li>
+          <li
+            class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r last:border-0 dark:border-gray-600"
+          >
+            <label class="flex items-center px-3 py-3 gap-2 cursor-pointer">
+              <input type="radio" name="language" value="zh" class="w-4 h-4 accent-blue-600" />
+              Chinese
+            </label>
+          </li>
+          <li
+            class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r last:border-0 dark:border-gray-600"
+          >
+            <label class="flex items-center px-3 py-3 gap-2 cursor-pointer">
+              <input type="radio" name="language" value="de" class="w-4 h-4 accent-blue-600" />
+              German
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="flex justify-center before:absolute before:-z-10 before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] md:after:w-[240px] after:w-[120px] after:translate-x-1/3 after:bg-conic-180 after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:pointer-events-none dark:before:bg-linear-to-br dark:before:from-transparent dark:before:to-blue-700 dark:before:opacity-10 dark:after:from-sky-900 dark:after:via-[#0141ff] dark:after:opacity-40 lg:before:h-[360px]"
+      >
+        <img
+          class="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+          src="magictranslate.svg"
+          alt="Magic Translate Logo"
+          width="180"
+          height="37"
+        />
+      </div>
+
+      <div class="flex flex-col items-center gap-3 text-center">
+        <input
+          id="name"
+          placeholder="Type your name"
+          data-t-attrs="placeholder"
+          class="w-64 rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+        />
+        <p class="text-lg">
+          <t id="greeting">Type your name and watch this sentence being translated as you type.</t>
+        </p>
+      </div>
+
+      <div class="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
+        <a
+          href="https://magictranslate.io/docs/javascript"
+          class="flex flex-col items-center lg:items-stretch group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 dark:hover:border-neutral-700 dark:hover:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 class="mb-3 text-2xl font-semibold">
+            <t>Docs</t>
+            <span
+              class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none"
+              >-&gt;</span
+            >
+          </h2>
+          <p class="m-0 max-w-[30ch] text-sm opacity-50">
+            <t>Find out how to get started and read about features and the API</t>
+          </p>
+        </a>
+
+        <a
+          href="https://magictranslate.io"
+          class="flex flex-col items-center lg:items-stretch group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 dark:hover:border-neutral-700 dark:hover:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 class="mb-3 text-2xl font-semibold">
+            <t>Sign up</t>
+            <span
+              class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none"
+              >-&gt;</span
+            >
+          </h2>
+          <p class="m-0 max-w-[30ch] text-sm opacity-50">
+            <t>Check out the official Magic Translate website to create an account</t>
+          </p>
+        </a>
+
+        <a
+          href="https://magictranslate.io/pricing"
+          class="flex flex-col items-center lg:items-stretch group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 dark:hover:border-neutral-700 dark:hover:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 class="mb-3 text-2xl font-semibold">
+            <t>Pricing</t>
+            <span
+              class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none"
+              >-&gt;</span
+            >
+          </h2>
+          <p class="m-0 max-w-[30ch] text-sm opacity-50">
+            <t>Learn about the available packages and their cost</t>
+          </p>
+        </a>
+
+        <a
+          href="https://github.com/magic-translate"
+          class="flex flex-col items-center lg:items-stretch group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 dark:hover:border-neutral-700 dark:hover:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 class="mb-3 text-2xl font-semibold">
+            <t>Examples</t>
+            <span
+              class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none"
+              >-&gt;</span
+            >
+          </h2>
+          <p class="m-0 max-w-[30ch] text-sm opacity-50">
+            <t>Find Magic Translate code examples on GitHub</t>
+          </p>
+        </a>
+      </div>
+    </main>
+
+    <script>
+      // The language switcher. The script tag remembers the language picked
+      // last, so the matching radio button is checked once it is ready.
+      document.addEventListener('magictranslate:ready', ({ detail: magicTranslate }) => {
+        const radios = document.querySelectorAll('#languages input');
+        radios.forEach((radio) => {
+          radio.checked = radio.value === magicTranslate.language;
+          radio.addEventListener('change', () => magicTranslate.setLanguage(radio.value));
+        });
+      });
+
+      // Changing the content of a <t> element translates it again.
+      const greeting = document.getElementById('greeting');
+      document.getElementById('name').addEventListener('input', (event) => {
+        const name = event.target.value.trim();
+        if (!name) {
+          greeting.textContent =
+            'Type your name and watch this sentence being translated as you type.';
+          return;
+        }
+        const bold = document.createElement('b');
+        bold.textContent = name;
+        greeting.replaceChildren('Hello ', bold, ', nice to meet you!');
+      });
+    </script>
+  </body>
+</html>
