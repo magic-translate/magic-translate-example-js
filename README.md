@@ -25,7 +25,7 @@ Magic Translate is set up with one script tag in `index.html`:
 
 ```html
 <script
-  src="https://cdn.jsdelivr.net/npm/@magic-translate/js@0.0.1/dist/magic-translate.min.js"
+  src="https://cdn.jsdelivr.net/npm/@magic-translate/js@1/dist/magic-translate.min.js"
   data-api-key="YOUR_API_KEY"
   data-language="en"
   defer
